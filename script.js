@@ -10,13 +10,22 @@ function loadPreviousData() {
   const previousSearches = JSON.parse(localStorage.getItem("previousSearches")) || [];
   const lastSearch = JSON.parse(localStorage.getItem("lastSearch"));
 
-  // Populate the previous searches list
+  // Clear the current list
   searchesList.innerHTML = "";
-  previousSearches.forEach((search) => {
-    const li = document.createElement("li");
-    li.textContent = `${search.city}, ${search.state} - Population: ${search.population}`;
-    searchesList.appendChild(li);
-  });
+
+  if (previousSearches.length === 0) {
+    // Display placeholder if no searches are available
+    const emptyMessage = document.createElement("li");
+    emptyMessage.textContent = "No recent searches.";
+    searchesList.appendChild(emptyMessage);
+  } else {
+    // Populate the previous searches list
+    previousSearches.forEach((search) => {
+      const li = document.createElement("li");
+      li.textContent = `${search.city}, ${search.state} - Population: ${search.population}`;
+      searchesList.appendChild(li);
+    });
+  }
 
   // Populate the input fields with the last search (if available)
   if (lastSearch) {
@@ -25,6 +34,7 @@ function loadPreviousData() {
     resultDiv.textContent = `The population of ${lastSearch.city}, ${lastSearch.state.toUpperCase()} is ${lastSearch.population.toLocaleString()}.`;
   }
 }
+
 
 // Save search to localStorage
 function saveSearch(city, state, population) {
