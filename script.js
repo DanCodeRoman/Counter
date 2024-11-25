@@ -48,6 +48,10 @@ function saveSearch(city, state, population) {
 function clearSearches() {
   localStorage.removeItem("previousSearches");
   searchesList.innerHTML = ""; // Clear the list in the UI
+
+  const emptyMessage = document.createElement("li");
+  emptyMessage.textContent = "No recent searches.";
+  searchesList.appendChild(emptyMessage);
 }
 
 // Attach the clearSearches function to the button
