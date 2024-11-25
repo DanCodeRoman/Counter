@@ -44,6 +44,15 @@ function saveSearch(city, state, population) {
   localStorage.setItem("lastSearch", JSON.stringify(newSearch));
 }
 
+// Clear searches from localStorage and update UI
+function clearSearches() {
+  localStorage.removeItem("previousSearches");
+  searchesList.innerHTML = ""; // Clear the list in the UI
+}
+
+// Attach the clearSearches function to the button
+document.getElementById("clearSearches").addEventListener("click", clearSearches);
+
 // Fetch population data
 cityForm.addEventListener("submit", async (event) => {
   event.preventDefault();
