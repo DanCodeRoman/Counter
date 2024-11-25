@@ -18,8 +18,7 @@ document.getElementById("cityForm").addEventListener("submit", async (event) => 
     const response = await fetch(
       `https://api.api-ninjas.com/v1/city?name=${city}&state=${state}`,
       {
-        headers: { 'X-Api-Key': 'kHlSOqsOdmCMfgo+/CJiTg==CbKnkjCn0Zijsjtg
-' } // Replace with your API key
+        headers: { 'X-Api-Key': kHlSOqsOdmCMfgo+/CJiTg==CbKnkjCn0Zijsjtg} // Replace with your API key
       }
     );
 
